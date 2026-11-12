@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CatatUang</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+
+<div id="loginScreen">
+  <div class="login-container">
+
+    <div class="login-logo">💰</div>
+
+    <h1>CatatUang</h1>
+
+    <p class="login-description">
+      Kelola keuanganmu dengan lebih mudah,
+      teratur, dan cerdas.
+    </p>
+
+    <div class="login-card">
+
+      <h2>Selamat Datang!</h2>
+
+      <p>Masuk untuk mulai mengelola keuanganmu.</p>
+
+      <button id="googleLogin">
+        🌐 Masuk dengan Google
+      </button>
+
+      <p id="loginStatus"></p>
+
+    </div>
+
+    <div class="login-footer">
+      CatatUang © 2026
+      <br>
+      Kelola uang, raih tujuan.
+    </div>
+
+  </div>
+</div>
+
+<div id="appContent" style="display:none;">
+
+  <header>
+    <div>
+      <p class="greeting">Selamat datang 👋</p>
+      <h2>CatatUang</h2>
+    </div>
+    <div class="profile">CU</div>
+
+<button id="googleLogout" type="button" class="logout-button">
+  <span>↪</span>
+  Keluar
+</button>
+  </header>
+
+  <main>
+    <section class="balance">
+      <p>Total Saldo</p>
+      <h1 id="saldo">Rp0</h1>
+      <div class="summary">
+        <div>
+          <span>↑ Pemasukan</span>
+          <strong id="pemasukan">Rp0</strong>
+        </div>
+        <div>
+          <span>↓ Pengeluaran</span>
+          <strong id="pengeluaran">Rp0</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="actions">
+  <button onclick="openModal('masuk')">
+    + Pemasukan
+  </button>
+
+  <button onclick="openModal('keluar')">
+    − Pengeluaran
+  </button>
+    </section>
+
+    <section class="transactions">
+      <div class="section-title">
+        <h3>Transaksi Terakhir</h3>
+        <span>Semua</span>
+      </div>
+
+      <input
+  type="search"
+  id="searchTransaction"
+  class="search-transaction"
+  placeholder="🔍 Cari nama transaksi atau kategori..."
+>
+
+      <div class="empty" id="transactionList">
+  <div class="empty-icon">📋</div>
+  <h3>Belum ada transaksi</h3>
+  <p>Transaksi kamu akan muncul di sini.</p>
+      </div>
+    </section>
+    
+<section class="report-section">
+  <div class="section-title">
+    <h3>Laporan Keuangan</h3>
+    <span>Bulan Ini</span>
+  </div>
+
+  <div class="report-card">
+    <p>Total Transaksi Bulan Ini</p>
+    <h2 id="totalTransaksi">0</h2>
+  </div>
+
+  <div class="report-grid">
+    <div class="report-box">
+      <span>Total Pemasukan</span>
+      <strong id="laporanPemasukan">Rp0</strong>
+    </div>
+
+    <div class="report-box">
+      <span>Total Pengeluaran</span>
+      <strong id="laporanPengeluaran">Rp0</strong>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <h3>Perbandingan Keuangan</h3>
+
+    <div class="chart-item">
+      <div class="chart-label">
+        <span>Pemasukan</span>
+        <strong id="persenMasuk">0%</strong>
+      </div>
+      <div class="chart-track">
+        <div id="barMasuk" class="chart-bar income-bar"></div>
+      </div>
+    </div>
+
+    <div class="chart-item">
+      <div class="chart-label">
+        <span>Pengeluaran</span>
+        <strong id="persenKeluar">0%</strong>
+      </div>
+      <div class="chart-track">
+        <div id="barKeluar" class="chart-bar expense-bar"></div>
+      </div>
+    </div>
+  </div>
+</section>
+    
+    <button
+  type="button"
+  class="export-pdf"
+  onclick="eksporPDF()"
+>
+  📄 Ekspor Laporan PDF
+    </button>
+  </main>
+  
+<div class="modal" id="transactionModal">
+  <div class="modal-content">
+    <h2 id="modalTitle">Tambah Transaksi</h2>
+
+    <form id="transactionForm">
+      <label>Nominal (Rp)</label>
+      <input
+        type="number"
+        id="amount"
+        placeholder="Contoh: 50000"
+        min="1"
+        step="1"
+        required
+      >
+
+      <label>Keterangan</label>
+      <input
+        type="text"
+        id="description"
+        placeholder="Contoh: Uang jajan"
+        maxlength="60"
+        required
+      >
+
+      <label>Kategori</label>
+      <select id="category">
+        <option>Makanan</option>
+        <option>Transportasi</option>
+        <option>Sekolah</option>
+        <option>Belanja</option>
+        <option>Gaji</option>
+        <option>Tabungan</option>
+        <option>Lainnya</option>
+      </select>
+
+      <label>Tanggal</label>
+      <input type="date" id="date" required>
+
+      <div class="modal-actions">
+        <button type="button" onclick="closeModal()">
+          Batal
+        </button>
+
+        <button type="submit">
+          Simpan
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+  <nav>
+    <div class="active">⌂<small>Beranda</small></div>
+    <div>↕<small>Transaksi</small></div>
+    <div>▤<small>Laporan</small></div>
+    <div>⚙<small>Pengaturan</small></div>
+  </nav>
+</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="app.js"></script>
+
+<script type="module" src="firebase-auth.js"></script>
+</body>
+</html>

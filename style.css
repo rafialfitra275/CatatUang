@@ -1,0 +1,587 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  color: #202938;
+  padding: 22px 18px 100px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.greeting {
+  color: #8993a4;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+header h2 {
+  font-size: 23px;
+}
+
+.profile {
+  background: #176b50;
+  color: white;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+}
+
+.balance {
+  background: #176b50;
+  color: white;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px #176b5030;
+}
+
+.balance p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.balance h1 {
+  font-size: 30px;
+  margin: 12px 0 25px;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.summary div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summary span {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.summary strong {
+  font-size: 15px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin: 22px 0 30px;
+}
+
+.actions button {
+  flex: 1;
+  padding: 15px 5px;
+  border: none;
+  border-radius: 12px;
+  background: white;
+  col.search-transaction {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #e1e5e9;
+  border-radius: 12px;
+  background: white;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-transaction:focus {
+  border-color: #176b50;
+}or: #176b50;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.transactions {
+  margin-top: 10px;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.section-title h3 {
+  font-size: 17px;
+}
+
+.section-title span {
+  color: #176b50;
+  font-size: 13px;
+}
+
+.empty {
+  text-align: center;
+  background: white;
+  padding: 35px 15px;
+  border-radius: 16px;
+}
+
+.empty-icon {
+  font-size: 35px;
+  margin-bottom: 12px;
+}
+
+.empty h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.empty p {
+  color: #8993a4;
+  font-size: 12px;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 14px 5px;
+  box-shadow: 0 -3px 15px #0000000a;
+}
+
+nav div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: #929baa;
+  font-size: 20px;
+}
+
+nav small {
+  font-size: 10px;
+}
+
+nav .active {
+  color: #176b50;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #00000080;
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+}
+
+.modal-content {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  border-radius: 20px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-content h2 {
+  margin-bottom: 22px;
+  font-size: 21px;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-content label {
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+  font-size: 15px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: #176b50;
+  color: white;
+  font-weight: bold;
+}
+
+.modal-actions button:first-child {
+  background: #e9edf0;
+  color: #333;
+}
+
+.transaction-item {
+  background: white;
+  padding: 16px;
+  border-radius: 13px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.transaction-item p {
+  font-size: 13px;
+  color: #8993a4;
+  margin-top: 5px;
+}
+
+.transaction-item strong {
+  font-size: 14px;
+}
+
+.income-text {
+  color: #16865d;
+}
+
+.expense-text {
+  color: #d9534f;
+}
+
+.transaction-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.transaction-item > div:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.transaction-item > strong {
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+.transaction-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.transaction-actions button {
+  border: none;
+  border-radius: 9px;
+  padding: 9px 17px;
+  font-size: 13px;
+  font-weight: bold;
+  background: #e8f3ee;
+  color: #176b50;
+}
+
+.transaction-actions button:last-child {
+  background: #fff0ef;
+  color: #d9534f;
+}
+
+.search-transaction {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #e1e5e9;
+  border-radius: 12px;
+  background: white;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-transaction:focus {
+  border-color: #176b50;
+}
+
+.report-section {
+  margin-top: 30px;
+}
+
+.report-card {
+  background: #176b50;
+  color: white;
+  padding: 22px;
+  border-radius: 16px;
+  margin-bottom: 14px;
+}
+
+.report-card p {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.report-card h2 {
+  font-size: 28px;
+  margin-top: 10px;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.report-box {
+  background: white;
+  padding: 17px 12px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.report-box span {
+  font-size: 12px;
+  color: #8993a4;
+}
+
+.report-box strong {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.chart-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.chart-card h3 {
+  font-size: 16px;
+  margin-bottom: 22px;
+}
+
+.chart-item {
+  margin-bottom: 20px;
+}
+
+.chart-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 9px;
+}
+
+.chart-track {
+  width: 100%;
+  height: 12px;
+  background: #edf0f2;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.chart-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 20px;
+  transition: width 0.3s ease;
+}
+
+.income-bar {
+  background: #16a36a;
+}
+
+.expense-bar {
+  background: #e36b65;
+}
+
+.export-pdf {
+  width: 100%;
+  padding: 15px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #176b50;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.export-pdf:active {
+  opacity: 0.8;
+}
+
+/* =========================
+   LOGIN CATATUANG
+========================= */
+
+#loginScreen {
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top right, #263f83, transparent 45%),
+    linear-gradient(145deg, #101b38, #172b52 60%, #0e1933);
+  font-family: Arial, sans-serif;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 390px;
+  text-align: center;
+  color: white;
+}
+
+.login-logo {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 20px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #48a7ff, #2864e8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  box-shadow: 0 12px 30px rgba(36, 111, 255, 0.3);
+}
+
+.login-container h1 {
+  font-size: 30px;
+  margin: 0 0 10px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.login-container .login-description {
+  color: #b9c7e3;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 22px;
+  padding: 26px 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.login-card h2 {
+  font-size: 19px;
+  margin: 0 0 8px;
+}
+
+.login-card p {
+  color: #c0cce2;
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+
+#googleLogin {
+  width: 100%;
+  min-height: 50px;
+  border: none;
+  border-radius: 12px;
+  background: white;
+  color: #26344d;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#googleLogin:active {
+  transform: scale(0.97);
+}
+
+#googleLogin:hover {
+  background: #edf3ff;
+}
+
+#loginStatus {
+  color: #c9d8f5;
+  font-size: 12px;
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+.login-footer {
+  color: #91a5ca;
+  font-size: 11px;
+  margin-top: 28px;
+}
+
+@media (max-width: 400px) {
+  #loginScreen {
+    padding: 18px;
+  }
+
+  .login-container h1 {
+    font-size: 26px;
+  }
+
+  .login-card {
+    padding: 22px 16px;
+  }
+}
+.logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 14px;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  background: #fff1f2;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logout-button span {
+  font-size: 18px;
+}
+
+.logout-button:active {
+  transform: scale(0.96);
+  background: #ffe4e6;
+}
