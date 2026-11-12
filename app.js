@@ -494,5 +494,77 @@ window.CatatUangApp = {
   }
 };
 
+// =========================
+// NAVIGASI 4 HALAMAN
+// =========================
+
+const navHome = document.getElementById("navHome");
+const navTransactions = document.getElementById("navTransactions");
+const navReports = document.getElementById("navReports");
+const navSettings = document.getElementById("navSettings");
+
+// Mengambil semua halaman
+const homePage = document.getElementById("homePage");
+const transactionsPage = document.getElementById("transactionsPage");
+const reportsPage = document.getElementById("reportsPage");
+const settingsPage = document.getElementById("settingsPage");
+
+// Fungsi berpindah halaman
+function bukaHalaman(halaman, tombol) {
+
+  // Sembunyikan semua halaman
+  document.querySelectorAll(".page").forEach(function(item) {
+    item.classList.remove("active");
+  });
+
+  // Tampilkan halaman yang dipilih
+  halaman.classList.add("active");
+
+  // Atur tombol navigasi
+  document.querySelectorAll("nav div").forEach(function(item) {
+    item.classList.remove("active");
+  });
+
+  tombol.classList.add("active");
+
+  // Kembali ke posisi atas
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+// Beranda
+navHome.addEventListener("click", function() {
+  bukaHalaman(homePage, navHome);
+});
+
+// Transaksi
+navTransactions.addEventListener("click", function() {
+  bukaHalaman(transactionsPage, navTransactions);
+});
+
+// Laporan
+navReports.addEventListener("click", function() {
+  bukaHalaman(reportsPage, navReports);
+});
+
+// Pengaturan
+navSettings.addEventListener("click", function() {
+  bukaHalaman(settingsPage, navSettings);
+});
+// Mendaftarkan Service Worker
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("./sw.js")
+      .then(function() {
+        console.log("CatatUang siap digunakan sebagai PWA");
+      })
+      .catch(function(error) {
+        console.error("Service Worker gagal:", error);
+      });
+  });
+}
+
 // Jalankan aplikasi
 tampilkanData();
