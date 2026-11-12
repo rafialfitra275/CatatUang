@@ -1,12 +1,20 @@
 
 <!DOCTYPE html>
 <html lang="id">
+
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>CatatUang</title>
+  <link rel="manifest" href="/CatatUang/manifest.json">
+<meta name="theme-color" content="#176b50">
+
   <link rel="stylesheet" href="style.css">
 </head>
+
+
 <body>
   
 
@@ -61,6 +69,9 @@
   </header>
 
   <main>
+
+  <!-- HALAMAN BERANDA -->
+  <div id="homePage" class="page active">
     <section class="balance">
       <p>Total Saldo</p>
       <h1 id="saldo">Rp0</h1>
@@ -85,9 +96,12 @@
     − Pengeluaran
   </button>
     </section>
+  </div>
+    <!-- HALAMAN TRANSAKSI -->
+<div id="transactionsPage" class="page">
+    <section class="transactions" id="transactionsSection">
 
-    <section class="transactions">
-      <div class="section-title">
+        <div class="section-title">
         <h3>Transaksi Terakhir</h3>
         <span>Semua</span>
       </div>
@@ -105,8 +119,12 @@
   <p>Transaksi kamu akan muncul di sini.</p>
       </div>
     </section>
+</div>
+
+      <!-- HALAMAN LAPORAN -->
+  <div id="reportsPage" class="page">
     
-<section class="report-section">
+<section class="report-section" id="reportSection">
   <div class="section-title">
     <h3>Laporan Keuangan</h3>
     <span>Bulan Ini</span>
@@ -153,15 +171,42 @@
     </div>
   </div>
 </section>
-    
-    <button
+
+<button
   type="button"
   class="export-pdf"
   onclick="eksporPDF()"
 >
   📄 Ekspor Laporan PDF
+</button>
+
+</div>
+
+<!-- HALAMAN PENGATURAN -->
+<div id="settingsPage" class="page">
+<section class="settings-section" id="settingsSection">
+
+  <div class="section-title">
+    <h3>Pengaturan</h3>
+  </div>
+
+  <div class="chart-card">
+    <h3>Informasi Aplikasi</h3>
+    <p>Nama aplikasi: CatatUang</p>
+    <p>Versi: 1.0</p>
+    <p>Kelola keuanganmu dengan lebih mudah.</p>
+
+    <button
+      type="button"
+      class="export-pdf"
+      onclick="document.getElementById('googleLogout').click()"
+    >
+      ↪ Keluar dari Akun
     </button>
-  </main>
+  </div>
+
+</section>
+</div>
   
 <div class="modal" id="transactionModal">
   <div class="modal-content">
@@ -214,13 +259,24 @@
   </div>
 </div>
 
+<nav>
+  <div id="navHome" class="active" role="button">
+    ⌂<small>Beranda</small>
+  </div>
 
-  <nav>
-    <div class="active">⌂<small>Beranda</small></div>
-    <div>↕<small>Transaksi</small></div>
-    <div>▤<small>Laporan</small></div>
-    <div>⚙<small>Pengaturan</small></div>
-  </nav>
+  <div id="navTransactions" role="button">
+    ↕<small>Transaksi</small>
+  </div>
+
+  <div id="navReports" role="button">
+    ▤<small>Laporan</small>
+  </div>
+
+  <div id="navSettings" role="button">
+    ⚙<small>Pengaturan</small>
+  </div>
+</nav>
+
 </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
