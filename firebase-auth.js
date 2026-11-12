@@ -140,9 +140,19 @@ document.getElementById("googleLogin").addEventListener("click", async () => {
   }
 });
 
-getRedirectResult(auth).catch(error => {
-  loginStatus.textContent = "Login gagal: " + error.message;
-});
+getRedirectResult(auth)
+  .then(result => {
+    if (result && result.user) {
+      console.log("Redirect berhasil:", result.user.email);
+    } else {
+      console.log("Tidak ada hasil redirect baru.");
+    }
+  })
+  .catch(error => {
+    console.error("Login redirect gagal:", error);
+    loginStatus.textContent =
+      "Login gagal: " + error.code;
+  });
 
 // Memeriksa status login
 onAuthStateChanged(auth, async user => {
