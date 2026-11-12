@@ -133,25 +133,17 @@ window.CatatUangCloud = {
 document.getElementById("googleLogin").addEventListener("click", async () => {
   try {
     loginStatus.textContent = "Menghubungkan ke Google...";
-    await signInWithRedirect(auth, provider);
-  } catch (error) {
-    loginStatus.textContent = "Login gagal: " + error.message;
-  }
-});
 
-getRedirectResult(auth)
-  .then(result => {
-    if (result && result.user) {
-      console.log("Redirect berhasil:", result.user.email);
-    } else {
-      console.log("Tidak ada hasil redirect baru.");
-    }
-  })
-  .catch(error => {
-    console.error("Login redirect gagal:", error);
+    await signInWithPopup(auth, provider);
+
+    loginStatus.textContent = "Login berhasil!";
+  } catch (error) {
+    console.error("Login gagal:", error);
+
     loginStatus.textContent =
       "Login gagal: " + error.code;
-  });
+  }
+});
 
 // Memeriksa status login
 onAuthStateChanged(auth, async user => {
